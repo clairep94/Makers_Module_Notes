@@ -1,6 +1,79 @@
 # GIT:
 
+* .git is a hidden folder that keeps all the past versions ("commits" or snapshot) of a project folders. 
+
+  * Similar workflow to when I copy over a "V2" folder or a "V2" file
+
+* Version control allows for multiple versions or "branches" to be built simultaneously, then brought together
+
+* These can be saved onto GitHub, which is a cloud service for git and version control.
+
+
 ## KEY CODE:
+
+### INITIALISING A LOCAL REPO & FIRST LOCAL COMMIT:
+```
+; cd projectFolder #make sure to be in the project folder
+; echo "This is an intro to the project" > README   #change to project, can be external to the terminal.
+
+; git init  #initialise a local .git folder
+; git status  #check status of .git folder. This will show you any items to stage.
+
+; git add README  #add items to staging area
+; git commit -m "Initial commit"
+; git status
+; git log
+```
+
+Make sure to be in the master folder of the entire project
+Note that git ignores empty directories
+How to remove .git if you accidentally initialise a folder
+
+
+### LOCAL COMMIT:
+
+
+
+
+### LINKING REMOTE WITH LOCAL & PUSHING TO REMOTE:
+
+
+
+
+### PULLING & RESETTING FROM REMOTE:
+
+
+
+
+
+
+### CLONING A REMOTE REPO TO LOCAL:
+
+
+
+
+
+## NOTES:
+
+## GIT SETUP ON MACHINE:
+
+This was done on my machine already but for future reference:
+```
+; brew upgrade git
+; export PATH=/usr/local/bin:$PATH
+; git --version
+git version 2.32.0
+; git config --global user.name "your name"
+; git config --global user.email "your email"
+; git config --global core.autocrlf input
+; git config --global core.safecrlf true
+; git config --global init.defaultBranch main
+```
+I also already added my authentication token, which is saved locally
+
+
+=======================================================================================
+
 
 ### LOCAL COMMIT:
 ```
@@ -84,13 +157,6 @@ Github `forking` is like cloning
 
 
 
-## INTRODUCTION:
-
-* Version control allows for multiple versions or 'branches' to be built simultaneously, then brought together.
-
-* Travel back in time, parallel lives
-
-* This is a similar workflow to when I copy over a project folder and rename to V2
 
 
 ## GIT SETUP:
