@@ -17,6 +17,7 @@
 `; git commit -m "description of change"`
 `; git push -u origin main`
 
+=======================================================================================
 ## INITIALISING A LOCAL REPO & FIRST LOCAL COMMIT:
 
 ```
@@ -66,7 +67,7 @@ q
 ; rm -rf .git
 ``` 
 
-
+=======================================================================================
 ## LOCAL COMMIT:
 
 ```
@@ -78,9 +79,7 @@ q
 ```
 
 
-
-
-
+=======================================================================================
 ## LINKING REMOTE WITH LOCAL & PUSHING TO REMOTE:
 
 Make sure to make a remote repo on github first.
@@ -110,8 +109,7 @@ Make sure to make a remote repo on github first.
 
 
 
-
-
+=======================================================================================
 
 ## PULLING & RESETTING FROM REMOTE:
 
@@ -145,9 +143,7 @@ For `pulling` changes by collaborators made after your last push to GitHub
 For `resetting` to the last pushed set up of files on GitHub. Resets ALL files in the repo.
 
 
-
-
-
+=======================================================================================
 
 ## CLONING A REMOTE REPO TO LOCAL:
 
@@ -168,9 +164,6 @@ is equivalent to:
 ; cd ..
 ```
 Github `forking` is like cloning
-
-
-
 
 
 =======================================================================================
@@ -200,6 +193,7 @@ I also already added my authentication token, which is saved locally
 `Password for 'https://clairep94@github.com:` <my authorisation token> see local file called AuthorisationTokens
 
 
+=======================================================================================
 
 ## WHEN TO COMMIT:
 
