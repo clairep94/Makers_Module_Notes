@@ -1,4 +1,9 @@
 # PYTHON:
+KEY CODE:
+`; ls` to make sure the wd contains `lib` and `tests`
+
+`; pipenv install`
+`; pipenv run pytest -x`
 
 ## PYTEST:
 Pytest is a test framework to write small, readable tests, and can scale to support complex functional testing for applications and libraries.
