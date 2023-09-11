@@ -6,6 +6,8 @@
 `; pipenv install`
 `; pipenv run pytest -x`
 
+===============================================================
+
 ## PYTEST:
 Pytest is a test framework to write small, readable tests, and can scale to support complex functional testing for applications and libraries.
 
