@@ -43,13 +43,11 @@ Make sure to go inside the folder CONTAINING the `lib` folder and `tests` folder
 ``` shell
 cd projectFolder
 
-; ls #check that the folder CONTAINS lib and tests folders before initiating pytest
+# check that the folder CONTAINS lib and tests folders before initiating pytest
+; ls 
 AirQuality.csv Pipfile        Pipfile.lock   conftest.py    lib            tests
-```
 
-### SET UP THE TESTING ENVIRONMENT:
-
-``` shell
+# install environment
 pipenv install
 ```
 
