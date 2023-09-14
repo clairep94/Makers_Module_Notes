@@ -107,6 +107,11 @@ Make sure to make a remote repo on github first.
 `; git push -u origin main` or `; git push` push local folder to remote
     * Enter username and token here if prompted, see below for initial set-up and authorisation instructions
 
+`; git pull origin main`
+
+`; git clone <REPO LINK ENDING IN .GIT>` to clone a remote repository. [Github Documentation: Clone a Repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+
+[Inviting collaborators](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository)
 
 
 =======================================================================================
@@ -147,7 +152,9 @@ For `resetting` to the last pushed set up of files on GitHub. Resets ALL files i
 
 ## CLONING A REMOTE REPO TO LOCAL:
 
+[Github Documentation: Clone a Repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 Make sure you are in the parent folder you want your repo to be in (ie MakersProjects/week00)
+On Github.com, navigate to the main page of the repository. Above the list of files, click `<> Code`
 
 ```
 ; git clone <REPO LINK ENDING IN .GIT>

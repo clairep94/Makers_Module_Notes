@@ -1,10 +1,12 @@
 # PYTHON:
 ## KEY CODE:
 
-`; ls` to make sure the wd contains `lib` and `tests`
+`; ls` to make sure the wd contains `lib` and `tests` -- to [create directory from scratch](#setting-up-a-new-project)
 
 `; pipenv install`
 `; pipenv run pytest -x`
+
+`; pipenv --rm` to remove
 
 ===============================================================
 
@@ -26,7 +28,22 @@ def test_answer():
 
 System-wide change -- don't need to be in the correct wd. Only need to do once on the machine.
 
-```
+```shell
+# Let's install pyenv, a tool to manage different versions of Python.
+# This will ensure we have the latest Python, which has more readable error messages.
+; brew install pyenv
+# You may be given some extra instructions at the end of the command.
+# If you are, follow them. If not, keep going.
+
+# Now we'll install the latest Python.
+; pyenv install 3.11
+
+# And let's check to see if it is properly installed
+; pipenv --version
+# If you see "pipenv, version ..." then you can skip the rest of this
+# code block and go to the next one.
+
+# Otherwise, run these:
 ; python3 -m ensurepip --upgrade
 ; pip3 install --user pipenv
 ; echo 'export PATH="$PATH:$(python3 -m site --user-base)/bin" # Add Pipenv to PATH' >> ~/.zshrc
