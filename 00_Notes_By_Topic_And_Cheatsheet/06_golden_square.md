@@ -23,6 +23,10 @@ It is called test-driven development because you write the tests first, then foc
 A way of structuring code using objects and classes.
 
 Classes - blueprints for objects
+
+* classes look after some data (state) with a common group of methods (behaviour).
+
+
 Objects - encapsulate ('wrap') values ('state' or 'memory'), providing methods that control access to those values and do useful work.
 
 ## DEBUGGING:
