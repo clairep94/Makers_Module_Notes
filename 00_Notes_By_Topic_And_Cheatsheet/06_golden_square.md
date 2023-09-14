@@ -26,7 +26,6 @@ Classes - blueprints for objects
 
 * classes look after some data (state) with a common group of methods (behaviour).
 
-
 Objects - encapsulate ('wrap') values ('state' or 'memory'), providing methods that control access to those values and do useful work.
 
 ## DEBUGGING:
