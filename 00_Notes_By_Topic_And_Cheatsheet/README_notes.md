@@ -1,2 +1,0 @@
-# About:
-These are notes and exercises made as part of my learning at Maker's Bootcamp. The notes may skip over topics I had learned previously, such as Python basics, so they may not be useful for everyone.
