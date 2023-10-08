@@ -194,8 +194,58 @@ def test_reminds_the_user_to_do_a_task():
 
 ## TESTING CATCHING ERRORS:
 
+**There are two ways to catch errors with pytest:**
+
+* The first is when the main function `returns` an error using an if/else loop or try/except with `return` instead of `raise`, in case you can test the way that we usually test.
+
 ```shell
-# File: lib/reminder.py
+# File: lib/reminder.py -- If Else Loop
+
+class Reminder:
+    def __init__(self, name):
+        self.name = name
+        self.task = None
+
+    def remind_me_to(self, task):
+        self.task = task
+
+    def remind(self):
+        if self.task is None: #catch error
+            return "No reminder set!"
+        else:
+            return f"{self.task}, {self.name}!"
+    
+    def remind2(self):
+        try: 
+            return f"{self.task}, {self.name}!"
+        except KeyError:
+            return KeyError: "No reminder set!" #test this, do I include KeyError?
+        
+```
+```shell
+# File: tests/test_reminder.py
+
+from lib.reminder import *
+
+
+def test_reminder():
+    reminder = Reminder("Kay")
+    result = reminder.remind()
+    assert result == "No reminder set!"
+    assert reminder.remind2() == KeyError: "No reminder set!"  #test this, do I include KeyError?
+```
+<hr>
+
+**The second way to catch errors with `raise`:**
+
+* The second way is to `raise` an error. We can name the error, and this can be used in if/else (see first example, don't need to include else); or try/except (see second example)
+
+1. We import `pytest` so we can use it to check for errors.
+2. We use with `pytest.raises(Exception) as e:` to set up a section of the code where we expect an error to happen and then be caught by pytest.
+3. We use `str(e.value)` to get the error message that was generated, and then assert that it is the correct one.
+
+```shell
+# File: lib/reminder.py -- Example 1
 
 class Reminder:
     def __init__(self, name):
@@ -211,29 +261,8 @@ class Reminder:
             raise Exception("No reminder set!")
         return f"{self.task}, {self.name}!"
 ```
-
-**DO NOT DO:**
-
 ```shell
-# File: tests/test_reminder.py
-
-from lib.reminder import *
-
-
-def test_reminder():
-    reminder = Reminder("Kay")
-    result = reminder.remind()
-    assert result == "No reminder set!"
-```
-
-**INSTEAD:**
-
-1. We import `pytest` so we can use it to check for errors.
-2. We use with `pytest.raises(Exception) as e:` to set up a section of the code where we expect an error to happen and then be caught by pytest.
-3. We use `str(e.value)` to get the error message that was generated, and then assert that it is the correct one.
-
-```shell
-# File: tests/test_reminder.py
+# File: tests/test_reminder.py -- Example 1
 
 import pytest # <-- New code
 from lib.reminder import *
@@ -245,4 +274,121 @@ def test_reminder():
         reminder.remind()
     error_message = str(e.value) # <-- New code
     assert error_message == "No reminder set!"
+```
+
+<br>
+<hr>
+<br>
+
+```shell
+import os  
+import math  
+import re  
+  
+  
+class InvalidEmailError(Exception):  
+    """  
+    Raised when an email address is invalid  
+    """  
+  
+    pass  
+  
+  
+def division(a: int | float, b: int | float) -> float | ZeroDivisionError:  
+    """  
+    Returns the result of dividing a by b  
+  
+    Raises:  
+        ZeroDivisionError: If b is 0  
+    """  
+    try:  
+        return a / b  
+    except ZeroDivisionError:  
+        raise ZeroDivisionError("Division by zero is not allowed")  
+  
+  
+def square_root(a: int) -> float | ValueError:  
+    """  
+    Returns the square root of a  
+  
+    Raises:  
+        ValueError: If a is negative  
+    """  
+    try:  
+        return math.sqrt(a)  
+    except ValueError:  
+        raise ValueError("Square root of negative numbers is not allowed")  
+  
+  
+def delete_file(filename: str) -> None | FileNotFoundError:  
+    """  
+    Deletes a file  
+  
+    Raises:  
+        FileNotFoundError: If the file does not exist  
+    """  
+    try:  
+        os.remove(filename)  
+    except FileNotFoundError:  
+        raise FileNotFoundError(f"File {filename} not found")  
+  
+  
+def validate_email(email: str) -> bool | InvalidEmailError:  
+    """  
+    Validates an email address  
+  
+    Raises:  
+        InvalidEmailError: If the email address is invalid  
+    """  
+    if re.match(r"[^@]+@[^@]+\.[^@]+", email):  
+        return True  
+    else:  
+        raise InvalidEmailError("Invalid email address")  
+
+```
+```shell
+import pytest  
+from src.assert_examples import (  
+    division,  
+    square_root,  
+    validate_email,  
+    delete_file,  
+    InvalidEmailError,  
+)  
+  
+  
+def test_division_zero_division_error():  
+    """  
+    Test that a ZeroDivisionError is raised when the second argument is 0  
+    """  
+    with pytest.raises(ZeroDivisionError) as excinfo:  
+        division(1, 0)  
+    assert str(excinfo.value) == "Division by zero is not allowed"  
+  
+  
+def test_square_root_value_error():  
+    """  
+    Test that a ValueError is raised when the argument is negative  
+    """  
+    with pytest.raises(ValueError) as excinfo:  
+        square_root(-1)  
+    assert str(excinfo.value) == "Square root of negative numbers is not allowed"  
+  
+  
+def test_delete_file_not_found_error():  
+    """  
+    Test that a FileNotFoundError is raised when the file does not exist  
+    """  
+    with pytest.raises(FileNotFoundError) as excinfo:  
+        delete_file("non_existent_file.txt")  
+    assert str(excinfo.value) == "File non_existent_file.txt not found"  
+  
+  
+def test_validate_email_value_error():  
+    """  
+    Test that an InvalidEmailError is raised when the email address is invalid  
+    """  
+    with pytest.raises(InvalidEmailError) as excinfo:  
+        validate_email("invalid_email")  
+    assert str(excinfo.value) == "Invalid email address"
 ```
