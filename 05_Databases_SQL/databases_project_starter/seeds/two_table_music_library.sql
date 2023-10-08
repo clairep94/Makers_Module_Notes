@@ -22,8 +22,14 @@ CREATE TABLE albums (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255),
     release_year INTEGER,
-    artist_id INTEGER
+    artist_id INTEGER,
+    -- This snippet is taken from the Two Tables Schema Design Recipe document
+    constraint fk_artist foreign key(artist_id)
+        references artists(id) 
+        on delete cascade 
 );
+
+
 
 -- Finally, we add any records that are needed for the tests to run
 INSERT INTO artists (name, genre) VALUES ('Pixies', 'Rock');

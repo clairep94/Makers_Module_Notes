@@ -54,6 +54,14 @@ This project will use a few components:
 
 ## 1) CREATE A DATABASE:
 
+To drop and re-connect:
+```
+# From the starter project directory, in your terminal
+; dropdb music_library
+; createdb music_library
+; psql -h 127.0.0.1 music_library < seeds/music_library.sql
+```
+
 ``` shell
 # from psql:
 
