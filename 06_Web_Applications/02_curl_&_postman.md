@@ -11,7 +11,7 @@
 * `curl` is an HTTP client -- it can send a request to a server and receive a response. The only required argument to the command is the URL.
   * `curl` is the command-line version of `requests` for Python.
 
-EXAMPLE:
+### EXAMPLE:
 
 ```shell
 ; curl -X GET https://jsonplaceholder.typicode.com/todos/12
@@ -26,21 +26,33 @@ EXAMPLE:
 }
 ```
 
-## REQUESTS:
 
-An HTTP request is defined by:
+<br>
+<hr>
+<hr>
+<br>
 
-* its **method** (also called 'verb') (`GET`, `POST`)
-* its **URL** (`https://jsonplaceholder.typicode.com`)
-* its **path** - is all that follows the first `/` of the URL (`/todos/12`, `/`)
-* its **parameters** (or request data) (a key-value pair of parameters) -- see next section.
+# POSTMAN & REQUESTS:
 
-`curl` does a `GET` request by default.
+[Install Postman here](https://www.postman.com/downloads/)
 
+## EXAMPLE GET REQUEST:
 
-## RESPONSE:
+In Postman, we can see our query params added to the `GET` request URL:
 
-An HTTP response is defined by:
+```shell
+#GET REQUEST: 
+curl https://jsonplaceholder.typicode.com/todos/12?name=Josh&age=30
 
-* **Status Code** (`200`, `404`, etc.)
-* **Content or Data** (`JSON`, etc.)
+#RESPONSE:
+{
+    "userId": 1,
+    "id": 12,
+    "title": "ipsa repellendus fugit nisi",
+    "completed": true
+}
+```
+
+**URL:** `https://jsonplaceholder.typicode.com` + <br>
+**PATH:** `/todos/12` + <br>
+**QUERY PARAMS:** `name = Josh` & `age = 30` = <br>
