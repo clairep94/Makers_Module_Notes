@@ -1,13 +1,40 @@
 # POST REQUEST:
 
+The `POST` method is often used to _send_ data to the web server (usually to create or update data, or just send some information). What is done with this data depends of the implementation of the web server.
+
+A `POST` request can contain _query parameters_ (like a `GET` request), but it can also contain _body parameters_. Contrarily to _query parameters_, they are not included in the URL, but within the request body itself.
+
+
+## `POST` REQUEST QUERY PARAMETERS:
+
+`request.form` to send data using _body parameters_
+
+```python
+from flask import Flask, request # Remember to import `request`
+
+app = Flask(__name__)
+
+# Request:
+# POST /goodbye
+#   With body parameter: name=Alice
+
+@app.route('/goodbye', methods=['POST'])
+def goodbye():
+    name = request.form['name'] # The value is 'Alice'
+
+    # Send back a fond farewell with the name
+    return f"Goodbye {name}!"
+
+```
+
 ## CURL
 
 Syntax:
 
 ```shell
-; curl -X POST -d "key=variable" http://localhost:5001/special_func
+; curl -X POST -d "key=variable&other_key=other%20variable" http://localhost:5001/special_func
 
-#body_params: "key=variable"
+#body_params: "key=variable", "other_key=other%20variable"
 #URL: http://localhost:5001
 #path: /special_func
 ```
@@ -22,7 +49,12 @@ Example:
 
 Syntax:
 
-```shell
+```python
+from flask import Flask, request # Remember to import `request`
+
+app = Flask(__name__)
+
+
 @app.route('/special_func', methods=['POST'])
 def special_func():
     variable = request.form['key'] #gets key from our query above
@@ -31,7 +63,12 @@ def special_func():
 
 Example:
 
-```shell
+```python
+from flask import Flask, request # Remember to import `request`
+
+app = Flask(__name__)
+
+
 @app.route('/count_vowels', methods=['POST'])
 def count_vowels():
     vowels = ['a', 'e', 'i', 'o', 'u']
@@ -44,14 +81,14 @@ def count_vowels():
 
 Syntax:
 
-```shell
+```python
 """
 When: I make a POST request to /path
 And: I send 'some variable' as the body parameter text
 Then: I should get a 200 response with variable
 """
 def test_some_function(web_client):
-    response = web_client.post('/path', data={'key': 'some variable'})
+    response = web_client.post('/path', data={'key': 'some variable', 'other_key': 'other variable'})
     assert response.status_code == 200
     assert response.data.decode('utf-8') == "Something done to some variable"
 
@@ -59,7 +96,7 @@ def test_some_function(web_client):
 
 Example:
 
-```shell
+```python
 
 # File: tests/test_app.py
 

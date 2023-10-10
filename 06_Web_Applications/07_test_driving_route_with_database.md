@@ -34,3 +34,22 @@ def get_books():
     repository.all()
     [...]
 ```
+
+## TIP FOR WRITING TESTS:
+
+Write whole test then, write the following to make sure corresponding route is correct.
+
+```python
+@app.route('/path/<id>', methods=['METHOD'])
+def some_method(id if there is id):
+     connection = BookRepository(connection)
+     repository = BookRepository(connection)
+     return ""
+```
+
+``` shell
+; pypenv shell
+; python app.py
+; pytest -svx
+
+```
